@@ -1,0 +1,72 @@
+body {
+    background: #ccc;
+    margin: 30px;
+    margin-left: 50px;
+}
+
+
+.main_background {
+    background: #ccc;
+}
+
+.card { 
+    margin: 25px;
+}
+h1 {
+    text-align: center;
+    margin-top: 15px;
+}
+img {
+    max-height: 500px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 20px;
+    //float:left;
+    //float: right;
+}
+
+.one_product{
+    border-radius: 4px;
+    background: #ccc;
+    margin: 20px;
+    padding: 20px;
+  
+}
+.one_img {
+    max-height: 600px; 
+    width: auto;
+    margin: 25px;
+    margin-left: 10px;
+}
+.background{
+    background: rgb(255, 253, 253);
+}
+
+.footer {
+    background: #007bff;
+    color: #212529;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+}
+
+/* это div для картинке в днс */
+.product-info__image {
+   // position: relative;
+    width: 92px;
+    height: 92px;
+    margin: 0 12px auto 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: right;
+}
+
+.mini_img {
+    height: 60px;
+    max-width: 120px;
+}
+

@@ -1,0 +1,31 @@
+в видео Внедрение зависимостей НА ПАЛЬЦАХ
+
+есть класс с подключением
+
+class Connection {
+    public function make() {
+        return new PDO('mysql:host=localhost;dbname=project3', "root", "root");
+    }
+}
+
+1 подключаю его use App\Connection; в class OneController и в class QueryBuilder
+
+2 в QueryBuilder в конструкторе передаю PDO $pdo
+
+3 в class OneController прописываю $db = new QueryBuilder(Connection::make()); 
+
+ но это по тому видео
+ 
+ а здесь, подключение  берется из $containerBuilder->addDefinitions[]
+ его и надо передать $db = new QueryBuilder($pdo); 
+  но почему-то не работает
+  Я правильно понял?
+
+Ответ:
+А здесь да, все компоненты подключаются через $containerBuilder->addDefinitions[]
+  Тебе там нужно объявить зависимости(компоненты), а потом работать с ними, 
+  как будто они уже подключены к проекту.
+
+Например, если ты объявил QueryBuilder, то он же без PDO не работает, 
+следовательно прямо в addDefinitions можно сделать так:
+new QueryBuilder(new PDO() )
