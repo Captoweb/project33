@@ -3,7 +3,7 @@
  use App\QueryBuilder;
  use League\Plates\Engine;
 
- // $db = new QueryBuilder(); 
+
  $pdo  = new PDO('mysql:host=localhost;dbname=project3', "root", "root");
 
 

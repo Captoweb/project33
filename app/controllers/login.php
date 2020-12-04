@@ -1,8 +1,4 @@
 <?php
-// use Delight\Auth\EmailOrUsernameRequiredError;
-
-//echo $this->templates->render('login', ['auth' =>  $auth, 'id' => $id]);
-
 
 try {   
      $this->auth->login($_POST['email'], $_POST['password']);

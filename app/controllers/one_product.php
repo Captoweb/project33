@@ -6,5 +6,3 @@
 
  $posts = $db->getAll('products');
  
-
- //var_dump($products); надо удалить

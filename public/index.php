@@ -31,8 +31,6 @@ $containerBuilder->addDefinitions([
     $container = $containerBuilder->build();
 
 
-// ORM::configure('mysql');
-
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 
     $r->addRoute('GET', '/', ['\App\controllers\OneController','home']);

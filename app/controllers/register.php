@@ -1,15 +1,9 @@
 <?php
 
-// $db  = new PDO('mysql:host=localhost;dbname=project3', "root", "root");
-// use Delight\Auth\Auth;
-// $this->auth = new Auth($db);
-
-//if( !session_id() ) @session_start();
-
-
     try {
         $userId = $this->auth->register($_POST['email'], $_POST['password'], $_POST['username']);
-        echo 'We have signed up a new user with the ID ' . $userId;
+        //echo 'We have signed up a new user with the ID ' . $userId;
+        flash()->message('We have signed up a new user with the ID ' . $userId);
     }
 
     catch (\Delight\Auth\InvalidEmailException $e) {
@@ -30,11 +24,4 @@
     }
     
     
-    
-
-    header("Location: /register_form");exit; 
-
-
-
-
- // echo $this->templates->render('register', ['userId' => $userId]);
+    header("Location: /register_form");exit;
