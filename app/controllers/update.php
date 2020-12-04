@@ -4,11 +4,9 @@
  use League\Plates\Engine;
 
 
-$db = new QueryBuilder();
+$id = $_POST['id'];
 
-  $id = $_POST['id'];
-
-$products = $db->update([
+$products = $this->qb->update([
     'id' => $_POST['id'],
     'name' => $_POST['name'],
     'description' => $_POST['description'],
@@ -17,17 +15,8 @@ $products = $db->update([
     'price' => $_POST['price']
 ], $id, 'products');   
 
-
-
- //$db = new QueryBuilder(); 
-
-
- //$products = $db->findOne('products', 'id'); 
- $products = $db->findOne('products', $id); 
- //$products = findOne();
  
-//var_dump($products);   
-//echo $products['name']; 
-//echo $products->first()->name; die;
+ $products = $this->qb->findOne('products', $id); 
+
 echo $this->templates->render('product_update', ['products' =>  $products, 'id' => $id]);
- header("Location: /main_admin");  
+header("Location: /main_admin");   

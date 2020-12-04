@@ -11,14 +11,13 @@ class QueryBuilder {
     private  $queryFactory;
 
 
-    public function __construct(PDO $pdo) { // тут не передается PDO $pdo
+    public function __construct(PDO $pdo) { 
         
        // $this->pdo = new PDO('mysql:host=localhost;dbname=project3', "root", "root");
         $this->pdo = $pdo;
         $this->queryFactory = new QueryFactory('mysql');
     }
     
-// При создании объекта QueryBuilder нужно передавать экземпляр объекта PDO (подключение то есть)
 
     public function getAll($table) {
 

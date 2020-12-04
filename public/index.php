@@ -5,7 +5,7 @@ require '../vendor/autoload.php';
 use DI\ContainerBuilder;
 use Delight\Auth\Auth;
 use App\QueryBuilder;
-
+use League\Plates\Engine;
 
 $containerBuilder = new ContainerBuilder;
 
@@ -15,12 +15,12 @@ $containerBuilder->addDefinitions([
             return new Engine('../app/views');
         },
     
-        PDO::class => function ( ) {
+        PDO::class => function() {
             return new PDO( 'mysql:host=localhost;dbname=project3', "root", "root" );
             },
 
-        QueryBuilder::class => function ( $container ) {
-            return new QueryBuilder($container->get( 'PDO' ) );
+        QueryBuilder::class => function($container) {
+            return new QueryBuilder($container->get('PDO'));
             },
     
         Auth::class => function($container) {
@@ -30,15 +30,7 @@ $containerBuilder->addDefinitions([
     
     $container = $containerBuilder->build();
 
-// $containerBuilder->addDefinitions([
 
-// QueryBuilder::class => function ( $container ) {
-//     return new QueryBuilder($container->get( 'PDO' ) );
-//     },
-
-//  ]);
-
-$container = $containerBuilder->build();
 // ORM::configure('mysql');
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {

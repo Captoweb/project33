@@ -17,32 +17,20 @@ class OneController {
 
     public function __construct(QueryBuilder $qb, Engine $engine, Auth $auth) {
 
-        
-        // $db  = new PDO('mysql:host=localhost;dbname=project3', "root", "root");
-        // $this->templates = new Engine('../app/views');
-        // $this->auth = new Auth($db);
-
         $this->qb = $qb;
         $this->templates = $engine;
         $this->auth = $auth;
         
-        // это не работает, надо что то передать сюда
-        // При создании объекта QueryBuilder нужно передавать экземпляр объекта PDO 
     }
 
 
     public function home() {
 
-        // d($this->qb);die; 
+         
+        $products = $this->qb->getAll('products'); 
+         
+          echo $this->templates->render('homepage', ['products' =>  $products]); 
 
-        $db = new QueryBuilder(); 
-        
-
-        $products = $db->getAll('products'); // вывожу все продукты
-        
-        // передаю из контроллера в вид 
-         echo $this->templates->render('homepage', [
-            'products' =>  $products]); 
 
         //require '../app/controllers/homepage.php';
 
@@ -52,10 +40,9 @@ class OneController {
 
     public function one_product() {
 
-        $db = new QueryBuilder(); // подключаюсь
         $id = $_GET['id'];
 
-        $products = $db->findOne('products', 'id'); 
+        $products = $this->qb->findOne('products', 'id'); 
 
         echo $this->templates->render('one_product', ['id' => $id, 'products' =>  $products]);
 
@@ -64,10 +51,10 @@ class OneController {
 
 
     public function category() {
-        $db = new QueryBuilder($pdo);
+        
         $id = $_GET['id'];
-        //$id = $_GET['category'];
-        $products = $db->getCategory('products', 'category'); 
+        
+        $products = $this->qb->getCategory('products', 'category'); 
         
         echo $this->templates->render('category', ['id' => $id,'category' => $category, 'products' =>  $products]);
     }
@@ -76,29 +63,25 @@ class OneController {
  
 
     public function mainAdmin() {
-        $db = new QueryBuilder();
 
-        $products = $db->getAll('products');  
+        $products = $this->qb->getAll('products');  
 
         echo $this->templates->render('main_admin', ['products' =>  $products]);
     }
 
 
     public function insert() {
-        $db = new QueryBuilder();
 
          require '../app/controllers/insert.php';
     }
 
     public function insertAll() {
-        $db = new QueryBuilder();
 
          require '../app/controllers/insert_all.php';
     }
 
 
     public function update() {
-        $db = new QueryBuilder();
 
         $id = $_GET['id'];
 
@@ -107,8 +90,6 @@ class OneController {
 
 
     public function delete() {
-
-        $db = new QueryBuilder();
         
         require '../app/controllers/delete.php';
     }

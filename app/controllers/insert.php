@@ -3,11 +3,9 @@
  use App\QueryBuilder;
  use League\Plates\Engine;
 
-
-$db = new QueryBuilder(); 
  
 if (!empty( $_POST['name']) && !empty( $_POST['description']) && !empty( $_POST['full_text']) ) {
-    $products = $db->insert([
+    $products = $this->qb->insert([
         'name' => $_POST['name'],
         'description' => $_POST['description'],
         'full_text' => $_POST['full_text'],
@@ -22,7 +20,7 @@ if (!empty( $_POST['name']) && !empty( $_POST['description']) && !empty( $_POST[
      
      }
     
-
 }
 
 echo $this->templates->render('product_insert', ['products' =>  $products]);
+header("Location: /main_admin"); 
